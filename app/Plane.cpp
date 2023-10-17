@@ -64,8 +64,12 @@ unsigned Plane::numberOfSnakesAt(unsigned r, unsigned c) const
 
 void Plane::moveSnakes()
 {
-    // TODO: IMPLEMENT ME
     // Move all snakes.  Mark the player as dead if necessary.
+    // Loop through all snakes and move them. Check if same row and col as Player
+    for (unsigned i{0}; i < m_nSnakes; ++i)
+    {
+        
+    }
 }
 
 void Plane::pushAllSnakes(unsigned r, unsigned c, int dir)
