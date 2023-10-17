@@ -27,14 +27,12 @@ Plane::~Plane()
 
 unsigned Plane::rows() const
 {
-    // TODO: IMPLEMENT ME
-    return 1;
+    return m_rows;
 }
 
 unsigned Plane::cols() const
 {
-    // TODO: IMPLEMENT ME
-    return 1;
+    return m_cols;
 }
 
 unsigned Plane::snakeCount() const
