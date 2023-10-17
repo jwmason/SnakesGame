@@ -31,8 +31,9 @@ unsigned Snake::col() const
 
 bool Snake::isDead() const
 {
-    // TODO: IMPLEMENT ME
-    return false;
+    // Check if Snake is dead, return true if dead and false if not
+    // Use given boolean that is in each Snake object
+    return m_dead;
 }
 
 void Snake::move()
