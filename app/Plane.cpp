@@ -68,7 +68,8 @@ void Plane::moveSnakes()
     // Loop through all snakes and move them. Check if same row and col as Player
     for (unsigned i{0}; i < m_nSnakes; ++i)
     {
-        
+        // move each Snake
+        m_snakes[i]->move();
     }
 }
 
