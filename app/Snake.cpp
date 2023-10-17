@@ -19,15 +19,14 @@ Snake::Snake(Plane* plane, unsigned r, unsigned c)
 
 unsigned Snake::row() const
 {
+    // Return what row this snake is at
     return m_row;
 }
 
 unsigned Snake::col() const
 {
-    // TODO: IMPLEMENT ME
-    // return what column this snake is at.
-    // Delete the following line and replace it with the correct code.
-    return 1; // This implementation compiles, but is incorrect.
+    // Return what column this snake is at
+    return m_col;
 }
 
 bool Snake::isDead() const
