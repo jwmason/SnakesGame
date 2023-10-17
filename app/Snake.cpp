@@ -38,13 +38,13 @@ bool Snake::isDead() const
 
 void Snake::move()
 {
-    // TODO: IMPLEMENT ME
     // Attempt a move in a random direction;  if it can't move, don't move.
 }
 
 void Snake::setDead()
 {
-    // TODO: IMPLEMENT ME   
+    // set the Snake to be dead
+    m_dead = true; 
 }
 
 void Snake::push(int dir)
