@@ -48,6 +48,8 @@ std::string Player::push()
     {
         onWhichPlane->pushAllSnakes(m_row, m_col - 1, 3); // Push snakes to the left
     }
+
+    // Return action
     return "Player pushed.";
 }
 
@@ -62,39 +64,32 @@ std::string Player::move(int dir)
     // Otherwise, return one of "Player moved north.", "Player moved east.", 
     // "Player moved south.", or "Player moved west."
 
-    // Initialize string
-    std::string msg = "Player couldn't move; player stands.";
-
-    // Update the player's position and msg based on the direction.
-    if (dir == 0 && m_row > 1)
+    // Moved
+    if (onWhichPlane->attemptMove(dir, m_row, m_col))
     {
-        m_row -= 1; // move up
-        msg = "Player moved north.";
+        if (dir == 0)
+        {
+            return "Player moved north.";
+        }
+        else if (dir == 1)
+        {
+            return "Player moved east.";
+        }
+        else if (dir == 2)
+        {
+            return "Player moved south.";
+        }
+        else if (dir == 3)
+        {
+            return "Player moved west.";
+        }
     }
-    else if (dir == 1 && m_col < onWhichPlane->cols())
-    {
-        m_col += 1; // move right
-        msg = "Player moved east.";
-    }
-    else if (dir == 2 && m_row < onWhichPlane->rows())
-    {
-        m_row += 1; // move down
-        msg = "Player moved south.";
-    }
-    else if (dir == 3 && m_col > 1)
-    {
-        m_col -= 1; // move left
-        msg = "Player moved west.";
-    }
-
-    // Check if the player has walked into a snake and died.
-    if (onWhichPlane->numberOfSnakesAt(m_row, m_col) != 0)
+    if (onWhichPlane->numberOfSnakesAt(m_row, m_col) > 0)
     {
         return "Player walked into a snake and died.";
     }
-
-    // Return the message
-    return msg;
+    // Couldn't move
+    return "Player couldn't move; player stands.";
 }
 
 bool Player::isDead() const

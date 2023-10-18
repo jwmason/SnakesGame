@@ -33,7 +33,11 @@ bool Snake::isDead() const
 {
     // Check if Snake is dead, return true if dead and false if not
     // Use given boolean that is in each Snake object
-    return m_dead;
+    if (m_dead)
+    {
+        return true;
+    }
+    return false;
 }
 
 void Snake::move()
@@ -50,23 +54,7 @@ void Snake::move()
     // Depending on direction, move the Snake position. Check also if it can even move
     // 0 - up, 1 - right, 2 - down, 3 - left
     // Access the Plane row/col the Snake is on, and check that it can move
-    if (direction == 0 && m_row > 1)
-    {
-        m_row -= 1; // move up
-    }
-    else if (direction == 1 && m_col < onWhichPlane->cols())
-    {
-        m_col += 1; // move right
-    }
-    else if (direction == 2 && m_row < onWhichPlane->rows())
-    {
-        m_row += 1; // move down
-    }
-    else if (direction == 3 && m_col > 1)
-    {
-        m_col -= 1; // move left
-    }
-
+    onWhichPlane->attemptMove(direction, m_row, m_col);
 }
 
 void Snake::setDead()

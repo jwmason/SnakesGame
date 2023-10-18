@@ -59,7 +59,7 @@ unsigned Plane::numberOfSnakesAt(unsigned r, unsigned c) const
 {
     // Returns the number of Snakes at specificed row and col
     // Intialize the number of snakes
-    int snakes = 0;
+    unsigned snakes = 0;
     // Loop through each snake in m_snakes to see if they are in specified row and col
     for (unsigned i{0}; i < m_nSnakes; ++i)
     {
@@ -109,8 +109,10 @@ bool Plane::attemptMove(int dir, unsigned& r, unsigned& c)
     // return true.
 
     // Initialize variables
-    int test_r = 0;
-    int test_c = 0;
+    int org_r = r;
+    int org_c = c;
+    int test_r = r;
+    int test_c = c;
 
     // Change accordingly
     if (dir == 0)
@@ -129,16 +131,15 @@ bool Plane::attemptMove(int dir, unsigned& r, unsigned& c)
     {
         test_c -= 1; // move west
     }
-    // Add back to original row and col
-    int test_rows = r + test_r;
-    int test_cols = c + test_c;
     // Check if the new position is within the Plane's bounds
-    if (isPosInBounds(test_rows, test_cols))
+    if (isPosInBounds(test_r, test_c))
     {
-        r = test_rows; // Update r
-        c = test_rows; // Update c
+        r = test_r; // Update r
+        c = test_c; // Update c
         return true;
     }
+    r = org_r;
+    c = org_c;
     return false;
 }
 
