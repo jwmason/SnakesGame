@@ -30,7 +30,7 @@ unsigned Player::col() const
 }
 
 std::string Player::push()
-{
+{   
     // TODO: IMPLEMENT ME
     // Cause the player to push, as per the spec.
     return "Player pushed.";
@@ -58,5 +58,6 @@ bool Player::isDead() const
 
 void Player::setDead()
 {
-    // TODO: IMPLEMENT ME 
+    // Set player to be dead
+    m_dead = True;
 }
