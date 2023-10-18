@@ -19,22 +19,19 @@ Player::Player(Plane* plane, unsigned r, unsigned c)
 
 unsigned Player::row() const
 {
-    // TODO: IMPLEMENT ME 
-    // return what column this  is at.
-    // Delete the following line and replace it with the correct code.
-    return 1;
+    // Return what row this is at.
+    return m_row;
 }
 
 unsigned Player::col() const
 {
-    // TODO: IMPLEMENT ME 
-    // Delete the following line and replace it with the correct code.
-    return 1;
+    // Return Player column
+    return m_col;
 }
 
 std::string Player::push()
 {
-    // TODO: IMPLEMENT ME 
+    // TODO: IMPLEMENT ME
     // Cause the player to push, as per the spec.
     return "Player pushed.";
 }
