@@ -45,8 +45,17 @@ unsigned Plane::snakeCount() const
 
 unsigned Plane::numberOfSnakesAt(unsigned r, unsigned c) const
 {
-    // TODO: IMPLEMENT ME
-    return 0;
+    // Initialize snake counter
+    int snakes = 0;
+    // Loop through each snake in snake object array
+    for (unsigned i = 0; i < m_nSnakes; ++i)
+    {
+        if (m_snakes[i]->row() == r && m_snakes[i]->col() == c)
+        {
+            snakes ++;
+        }
+    }
+    return snakes;
 }
 
 void Plane::moveSnakes()
