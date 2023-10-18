@@ -45,7 +45,7 @@ void Snake::move()
     // Depending on direction, move the Snake position. Check also if it can even move
     // 0 - up, 1 - right, 2 - down, 3 - left
     // Access the Plane row/col the Snake is on, and check that it can move
-    if (direction == 0 && m_row < onWhichPlane->rows())
+    if (direction == 0 && m_row > 1)
     {
         m_row -= 1; // move up
     }
@@ -53,7 +53,7 @@ void Snake::move()
     {
         m_col += 1; // move right
     }
-    else if (direction == 2 && m_row > 1)
+    else if (direction == 2 && m_row < onWhichPlane->rows())
     {
         m_row += 1; // move down
     }
@@ -61,6 +61,7 @@ void Snake::move()
     {
         m_col -= 1; // move left
     }
+
 }
 
 void Snake::setDead()

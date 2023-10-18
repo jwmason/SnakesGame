@@ -47,7 +47,7 @@ std::string Player::move(int dir)
     // Otherwise, return one of "Player moved north.", "Player moved east.", 
     // "Player moved south.", or "Player moved west."
 
-    if (dir == 0 && m_row < onWhichPlane->rows())
+    if (dir == 0 && m_row > 1)
     {
         m_row -= 1; // move up
     }
@@ -55,7 +55,7 @@ std::string Player::move(int dir)
     {
         m_col += 1; // move right
     }
-    else if (dir == 2 && m_row > 1)
+    else if (dir == 2 && m_row < onWhichPlane->rows())
     {
         m_row += 1; // move down
     }
