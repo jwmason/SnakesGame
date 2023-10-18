@@ -47,21 +47,21 @@ std::string Player::move(int dir)
     // Otherwise, return one of "Player moved north.", "Player moved east.", 
     // "Player moved south.", or "Player moved west."
 
-    if (dir == 0 && m_col < onWhichPlane->cols())
+    if (dir == 0 && m_row < onWhichPlane->rows())
     {
-        m_col += 1; // move up
+        m_row -= 1; // move up
     }
-    else if (dir == 1 && m_row < onWhichPlane->rows())
+    else if (dir == 1 && m_col < onWhichPlane->cols())
     {
-        m_row += 1; // move right
+        m_col += 1; // move right
     }
-    else if (dir == 2 && m_col > 1)
+    else if (dir == 2 && m_row > 1)
     {
-        m_col -= 1; // move down
+        m_row += 1; // move down
     }
-    else if (dir == 3 && m_row > 1)
+    else if (dir == 3 && m_col > 1)
     {
-        m_row -= 1; // move left
+        m_col -= 1; // move left
     }
     // Check if the new position is same as a snake
     return "Player couldn't move; player stands.";

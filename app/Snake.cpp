@@ -45,21 +45,21 @@ void Snake::move()
     // Depending on direction, move the Snake position. Check also if it can even move
     // 0 - up, 1 - right, 2 - down, 3 - left
     // Access the Plane row/col the Snake is on, and check that it can move
-    if (direction == 0 && m_col < onWhichPlane->cols())
+    if (direction == 0 && m_row < onWhichPlane->rows())
     {
-        m_col += 1; // move up
+        m_row -= 1; // move up
     }
-    else if (direction == 1 && m_row < onWhichPlane->rows())
+    else if (direction == 1 && m_col < onWhichPlane->cols())
     {
-        m_row += 1; // move right
+        m_col += 1; // move right
     }
-    else if (direction == 2 && m_col > 1)
+    else if (direction == 2 && m_row > 1)
     {
-        m_col -= 1; // move down
+        m_row += 1; // move down
     }
-    else if (direction == 3 && m_row > 1)
+    else if (direction == 3 && m_col > 1)
     {
-        m_row -= 1; // move left
+        m_col -= 1; // move left
     }
 }
 
@@ -76,19 +76,19 @@ void Snake::push(int dir)
     // Access the Plane row/col the Snake is on, and check that it can be pushed
     if (dir == 0)
     {
-        m_col += 1; // push up
+        m_row -= 1; // push up
     }
     else if (dir == 1)
     {
-        m_row += 1; // push right
+        m_col += 1; // push right
     }
     else if (dir == 2)
     {
-        m_col -= 1; // push down
+        m_row += 1; // push down
     }
     else if (dir == 3)
     {
-        m_row -= 1; // push left
+        m_col -= 1; // push left
     }
     // Check if Snake has been pushed off the Plane
     if (m_row > onWhichPlane->rows() || m_col > onWhichPlane->cols() || m_row < 1 || m_col < 1)
