@@ -78,10 +78,10 @@ TEST_CASE("PlayerCanPushTest2", "[RequiredProject]")
 	REQUIRE(c.numberOfSnakesAt(3,10) == 1 );
 	REQUIRE( c.snakeCount() == 1);
 	
-}
+}  
 
 
 
-                        
+
 } // end namespace
 

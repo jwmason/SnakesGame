@@ -22,166 +22,65 @@ Plane::Plane(unsigned nRows, unsigned nCols)
 
 Plane::~Plane()
 {
-    // Delete snakes and player to allocate space
-    // Loop through all the snakes and delete
-    for (unsigned i{0}; i < m_nSnakes; ++i)
-    {
-        delete m_snakes[i];
-        m_snakes[i] = nullptr;
-    }
-    // If Player is not null, delete and make null
-    if (m_player != nullptr)
-    {
-        delete m_player;
-        m_player = nullptr;
-    }
+    // TODO: IMPLEMENT ME
 }
 
 unsigned Plane::rows() const
 {
-    // Returns the Plane Rows
-    return m_rows;
+    // TODO: IMPLEMENT ME
+    return 1;
 }
 
 unsigned Plane::cols() const
 {
-    // Returns the Plane Columns
-    return m_cols;
+    // TODO: IMPLEMENT ME
+    return 1;
 }
 
 unsigned Plane::snakeCount() const
 {
-    // Returns the total amount of Snakes on the Plane
-    return m_nSnakes;
+    // TODO: IMPLEMENT ME
+    return 0;
 }
 
 unsigned Plane::numberOfSnakesAt(unsigned r, unsigned c) const
 {
-    // Returns the number of Snakes at specificed row and col
-    // Intialize the number of snakes
-    int snakes = 0;
-    // Loop through each snake in m_snakes to see if they are in specified row and col
-    for (unsigned i{0}; i < m_nSnakes; ++i)
-    {
-        // Get the row and col that each Snake is and compare to given ones
-        if (m_snakes[i]->row() == r && m_snakes[i]->col() == c)
-        {
-            // The snake is at the row and col
-            snakes += 1;
-        }
-    }
-    // Return the amount of snakes at the row and col
-    return snakes;
+    // TODO: IMPLEMENT ME
+    return 0;
 }
 
 void Plane::moveSnakes()
 {
+    // TODO: IMPLEMENT ME
     // Move all snakes.  Mark the player as dead if necessary.
-    // Loop through all snakes and move them. Check if same row and col as Player
-    for (unsigned i{0}; i < m_nSnakes; ++i)
-    {
-        // move each Snake
-        m_snakes[i]->move();
-        // If snake is moved to Player position, kill Player
-        if (m_player != nullptr && m_snakes[i]->row() == m_player->row() && m_snakes[i]->col() == m_player->col())
-        {
-            m_player->setDead();
-        }
-    }
 }
 
 void Plane::pushAllSnakes(unsigned r, unsigned c, int dir)
 {
+    // TODO: IMPLEMENT ME
     // Pushes all snakes at [r,c] in the given direction
-    // Loop through for every snake
-    for (unsigned i{0}; i < m_nSnakes; ++i)
-    {
-        // Call on snake push function
-        m_snakes[i]->push(dir);
-    }
 }
 
 bool Plane::attemptMove(int dir, unsigned& r, unsigned& c)
 {
+    // TODO: IMPLEMENT ME
     // Return false without changing anything if moving one step from (r,c)
     // in the indicated direction would hit a run off the edge of the plane.
     // Otherwise, update r and c to the position resulting from the move and
     // return true.
-
-    // Initialize variables
-    int test_r = 0;
-    int test_c = 0;
-
-    // Change accordingly
-    if (dir == 0)
-    {
-        test_r -= 1; // move north
-    }
-    else if (dir == 1)
-    {
-        test_c += 1; // move east
-    }
-    else if (dir == 2)
-    {
-        test_r += 1; // move south
-    }
-    else if (dir == 3)
-    {
-        test_c -= 1; // move west
-    }
-    // Add back to original row and col
-    int test_rows = r + test_r;
-    int test_cols = c + test_c;
-    // Check if the new position is within the Plane's bounds
-    if (isPosInBounds(test_rows, test_cols))
-    {
-        r = test_rows; // Update r
-        c = test_rows; // Update c
-        return true;
-    }
-    return false;
+    return true;
 }
 
 
 bool Plane::recommendMove(unsigned r, unsigned c, int& bestDir)
 {
+    // TODO: IMPLEMENT ME
+
     // Recommend a move for a player at (r,c):  A false return means the
     // recommendation is that the player should push and not move;
     // otherwise, this function sets bestDir to the recommended direction
     // to move and returns true.
-
-    // Intialize variables
-    unsigned danger_lv = MAX_SNAKES; // the worse case scernario in a position
-    int bestDirection = -1;
-
-    // Loop through every direction and find best direction
-    for (unsigned dir{0}; dir < NUMDIRS; ++dir)
-    {
-        // Intialize variables to be replaced for attemptMove()
-        unsigned test_r = 0;
-        unsigned test_c = 0;
-        // Use attemptMove to make sure new position is in bounds, and if so replace r and c
-        if (attemptMove(dir, test_r, test_c))
-        {
-            // Compute danger level with test position
-            unsigned new_danger = computeDanger(test_r, test_c);
-            // Check if position is better than pushing
-            if (new_danger < danger_lv)
-            {
-                // Set the lower danger level and given direction
-                danger_lv = new_danger;
-                bestDirection = dir;
-            }
-        }
-    }
-    // If no direction was better than pushing, return false
-    if (bestDirection == -1)
-    {
-        return false;
-    }
-    // If not, give best direction and return true
-    bestDir = bestDirection;
-    return true;
+    return false; 
 }
 
 Player* Plane::player() const
@@ -205,7 +104,7 @@ void Plane::display(std::string msg) const
         for (c = 1; c <= cols(); c++)
             displayGrid[r-1][c-1] = (getCellStatus(r,c) == EMPTY ? '.' : '*');
 
-    // Indicate each snake's position
+        // Indicate each snake's position
     for (unsigned k = 0; k < Plane::MAX_SNAKES; k++)
     {
         const Snake * vp = m_snakes[k];
