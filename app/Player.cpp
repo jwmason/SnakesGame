@@ -30,24 +30,12 @@ unsigned Player::col() const
 }
 
 std::string Player::push()
-{   
-    // Cause the player to push, as per the spec.
-     // Check if there are snakes in each of the four adjacent cells
-    if (onWhichPlane->numberOfSnakesAt(m_row - 1, m_col) > 0) // North
+{
+    // Go through every direction
+    for (unsigned dir{0}; dir < onWhichPlane->NUMDIRS; ++dir)
     {
-        onWhichPlane->pushAllSnakes(m_row - 1, m_col, 0); // Push snakes up
-    }
-    if (onWhichPlane->numberOfSnakesAt(m_row, m_col + 1) > 0) // East
-    {
-        onWhichPlane->pushAllSnakes(m_row, m_col + 1, 1); // Push snakes to the right
-    }
-    if (onWhichPlane->numberOfSnakesAt(m_row + 1, m_col) > 0) // South
-    {
-        onWhichPlane->pushAllSnakes(m_row + 1, m_col, 2); // Push snakes down
-    }
-    if (onWhichPlane->numberOfSnakesAt(m_row, m_col - 1) > 0) // West
-    {
-        onWhichPlane->pushAllSnakes(m_row, m_col - 1, 3); // Push snakes to the left
+        // Push all snakes in current direction
+        onWhichPlane->pushAllSnakes(m_row, m_col, dir);
     }
     return "Player pushed.";
 }

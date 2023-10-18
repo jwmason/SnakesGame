@@ -193,17 +193,19 @@ void Plane::display(std::string msg) const
         for (c = 1; c <= cols(); c++)
             displayGrid[r-1][c-1] = (getCellStatus(r,c) == EMPTY ? '.' : '*');
 
-        // Indicate each snake's position
-    for (unsigned k = 0; k < m_nSnakes; k++)
+    // Indicate each snake's position
+    for (unsigned k = 0; k < Plane::MAX_SNAKES; k++)
     {
         const Snake * vp = m_snakes[k];
-        char& gridChar = displayGrid[vp->row()-1][vp->col()-1];
-        switch (gridChar)
-        {
-          case '.':  gridChar = 'S'; break;
-          case 'S':  gridChar = '2'; break;
-          case '9':  break;
-          default:   gridChar++; break;  // '2' through '8'
+        if (vp && !vp->isDead()) {
+          char& gridChar = displayGrid[vp->row()-1][vp->col()-1];
+          switch (gridChar)
+          {
+            case '.':  gridChar = 'S'; break;
+            case 'S':  gridChar = '2'; break;
+            case '9':  break;
+            default:   gridChar++; break;  // '2' through '8'
+          }
         }
     }
 
