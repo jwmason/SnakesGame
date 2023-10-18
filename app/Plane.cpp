@@ -45,21 +45,8 @@ unsigned Plane::snakeCount() const
 
 unsigned Plane::numberOfSnakesAt(unsigned r, unsigned c) const
 {
-    // Returns the number of Snakes at specificed row and col
-    // Intialize the number of snakes
-    int snakes = 0;
-    // Loop through each snake in m_snakes to see if they are in specified row and col
-    for (unsigned i{0}; i < m_nSnakes; ++i)
-    {
-        // Get the row and col that each Snake is and compare to given ones
-        if (m_snakes[i]->row() == r && m_snakes[i]->col() == c)
-        {
-            // The snake is at the row and col
-            snakes += 1;
-        }
-    }
-    // Return the amount of snakes at the row and col
-    return snakes;
+    // TODO: IMPLEMENT ME
+    return 0;
 }
 
 void Plane::moveSnakes()
@@ -81,39 +68,7 @@ bool Plane::attemptMove(int dir, unsigned& r, unsigned& c)
     // in the indicated direction would hit a run off the edge of the plane.
     // Otherwise, update r and c to the position resulting from the move and
     // return true.
-
-    // Initialize variables
-    int test_r = 0;
-    int test_c = 0;
-
-    // Change accordingly
-    if (dir == 0)
-    {
-        test_r -= 1; // move north
-    }
-    else if (dir == 1)
-    {
-        test_c += 1; // move east
-    }
-    else if (dir == 2)
-    {
-        test_r += 1; // move south
-    }
-    else if (dir == 3)
-    {
-        test_c -= 1; // move west
-    }
-    // Add back to original row and col
-    int test_rows = r + test_r;
-    int test_cols = c + test_c;
-    // Check if the new position is within the Plane's bounds
-    if (isPosInBounds(test_rows, test_cols))
-    {
-        r = test_rows; // Update r
-        c = test_rows; // Update c
-        return true;
-    }
-    return false;
+    return true;
 }
 
 
