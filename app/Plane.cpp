@@ -70,6 +70,11 @@ void Plane::moveSnakes()
     {
         // move each Snake
         m_snakes[i]->move();
+        // If snake is moved to Player position, kill player
+        if (m_player != nullptr && m_snakes[i]->row() == m_player->row() && m_snakes[i]->col() == m_player->col())
+        {
+            m_player->setDead();
+        }
     }
 }
 
