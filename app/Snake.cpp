@@ -74,19 +74,19 @@ void Snake::push(int dir)
     // Pushes this snake in this direction.
     // 0 - up, 1 - right, 2 - down, 3 - left
     // Access the Plane row/col the Snake is on, and check that it can be pushed
-    if (direction == 0)
+    if (dir == 0)
     {
         m_col += 1; // push up
     }
-    else if (direction == 1)
+    else if (dir == 1)
     {
         m_row += 1; // push right
     }
-    else if (direction == 2)
+    else if (dir == 2)
     {
         m_col -= 1; // push down
     }
-    else if (direction == 3)
+    else if (dir == 3)
     {
         m_row -= 1; // push left
     }
