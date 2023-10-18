@@ -135,13 +135,43 @@ bool Plane::attemptMove(int dir, unsigned& r, unsigned& c)
 
 bool Plane::recommendMove(unsigned r, unsigned c, int& bestDir)
 {
-    // TODO: IMPLEMENT ME
-
     // Recommend a move for a player at (r,c):  A false return means the
     // recommendation is that the player should push and not move;
     // otherwise, this function sets bestDir to the recommended direction
     // to move and returns true.
-    return false; 
+
+    // Intialize variables
+    int danger_lv = MAX_SNAKES; // the worse case scernario in a position
+    int bestDirection = -1;
+
+    // Loop through every direction and find best direction
+    for (unsigned dir{0}; dir < NUMDIRS; ++dir)
+    {
+        // Intialize variables to be replaced for attemptMove()
+        unsigned test_r = 0;
+        unsigned test_c = 0;
+        // Use attemptMove to make sure new position is in bounds, and if so replace r and c
+        if (attemptMove(dir, test_r, test_c))
+        {
+            // Compute danger level with test position
+            unsigned new_danger = computeDanger(test_r, test_c);
+            // Check if position is better than pushing
+            if (new_danger < danger_lv)
+            {
+                // Set the lower danger level and given direction
+                danger_lv = new_danger;
+                bestDirection = dir;
+            }
+        }
+    }
+    // If no direction was better than pushing, return false
+    if (bestDirection == -1)
+    {
+        return false;
+    }
+    // If not, give best direction and return true
+    bestDir = bestDirection;
+    return true;
 }
 
 Player* Plane::player() const
