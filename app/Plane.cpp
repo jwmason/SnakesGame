@@ -80,8 +80,13 @@ void Plane::moveSnakes()
 
 void Plane::pushAllSnakes(unsigned r, unsigned c, int dir)
 {
-    // TODO: IMPLEMENT ME
     // Pushes all snakes at [r,c] in the given direction
+    // Loop through for every snake
+    for (unsigned i{0}; i < m_nSnakes; ++i)
+    {
+        // Call on snake push function
+        m_snakes[i]->push(dir);
+    }
 }
 
 bool Plane::attemptMove(int dir, unsigned& r, unsigned& c)
