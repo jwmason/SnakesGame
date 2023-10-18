@@ -117,11 +117,9 @@ bool Plane::attemptMove(int dir, unsigned& r, unsigned& c)
     {
         test_c -= 1; // move west
     }
-
     // Add back to original row and col
     int test_rows = r + test_r;
     int test_cols = c + test_c;
-
     // Check if the new position is within the Plane's bounds
     if (isPosInBounds(test_rows, test_cols))
     {
@@ -141,7 +139,7 @@ bool Plane::recommendMove(unsigned r, unsigned c, int& bestDir)
     // to move and returns true.
 
     // Intialize variables
-    int danger_lv = MAX_SNAKES; // the worse case scernario in a position
+    unsigned danger_lv = MAX_SNAKES; // the worse case scernario in a position
     int bestDirection = -1;
 
     // Loop through every direction and find best direction
