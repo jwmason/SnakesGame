@@ -91,12 +91,45 @@ void Plane::pushAllSnakes(unsigned r, unsigned c, int dir)
 
 bool Plane::attemptMove(int dir, unsigned& r, unsigned& c)
 {
-    // TODO: IMPLEMENT ME
     // Return false without changing anything if moving one step from (r,c)
     // in the indicated direction would hit a run off the edge of the plane.
     // Otherwise, update r and c to the position resulting from the move and
     // return true.
-    return true;
+
+    // Initialize variables
+    int test_r = 0;
+    int test_c = 0;
+
+    // Change accordingly
+    if (dir == 0)
+    {
+        test_r -= 1; // move north
+    }
+    else if (dir == 1)
+    {
+        test_c += 1; // move east
+    }
+    else if (dir == 2)
+    {
+        test_r += 1; // move south
+    }
+    else if (dir == 3)
+    {
+        test_c -= 1; // move west
+    }
+
+    // Add back to original row and col
+    int test_rows = r + test_r;
+    int test_cols = c + test_c;
+
+    // Check if the new position is within the Plane's bounds
+    if (isPosInBounds(test_rows, test_cols))
+    {
+        r = test_rows; // Update r
+        c = test_rows; // Update c
+        return true;
+    }
+    return false;
 }
 
 
