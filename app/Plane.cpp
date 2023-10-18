@@ -27,20 +27,20 @@ Plane::~Plane()
 
 unsigned Plane::rows() const
 {
-    // TODO: IMPLEMENT ME
-    return 1;
+    // Returns the Plane rows
+    return m_rows;
 }
 
 unsigned Plane::cols() const
 {
-    // TODO: IMPLEMENT ME
-    return 1;
+    // Returns the Plane columns
+    return m_cols;
 }
 
 unsigned Plane::snakeCount() const
 {
-    // TODO: IMPLEMENT ME
-    return 0;
+    // Returns total amount of snakes on the Plane
+    return m_nSnakes;
 }
 
 unsigned Plane::numberOfSnakesAt(unsigned r, unsigned c) const
