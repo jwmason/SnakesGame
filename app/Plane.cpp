@@ -22,7 +22,19 @@ Plane::Plane(unsigned nRows, unsigned nCols)
 
 Plane::~Plane()
 {
-    // TODO: IMPLEMENT ME
+    // Delete snakes and player to allocate space
+    // Loop through all the snakes and delete
+    for (unsigned i{0}; i < m_nSnakes; ++i)
+    {
+        delete m_snakes[i];
+        m_snakes[i] = nullptr;
+    }
+    // If Player is not null, delete and make null
+    if (m_player != nullptr)
+    {
+        delete m_player;
+        m_player = nullptr;
+    }
 }
 
 unsigned Plane::rows() const

@@ -32,10 +32,21 @@ unsigned Player::col() const
 std::string Player::push()
 {
     // Go through every direction
-    for (unsigned dir{0}; dir < onWhichPlane->NUMDIRS; ++dir)
+    if (m_row > 1 && onWhichPlane->numberOfSnakesAt(m_row - 1, m_col) > 0)
     {
-        // Push all snakes in current direction
-        onWhichPlane->pushAllSnakes(m_row, m_col, dir);
+        onWhichPlane->pushAllSnakes(m_row - 1, m_col, 0); // Push snakes up
+    }
+    if (m_col < onWhichPlane->cols() && onWhichPlane->numberOfSnakesAt(m_row, m_col + 1) > 0)
+    {
+        onWhichPlane->pushAllSnakes(m_row, m_col + 1, 1); // Push snakes to the right
+    }
+    if (m_row < onWhichPlane->rows() && onWhichPlane->numberOfSnakesAt(m_row + 1, m_col) > 0)
+    {
+        onWhichPlane->pushAllSnakes(m_row + 1, m_col, 2); // Push snakes down
+    }
+    if (m_col > 1 && onWhichPlane->numberOfSnakesAt(m_row, m_col - 1) > 0)
+    {
+        onWhichPlane->pushAllSnakes(m_row, m_col - 1, 3); // Push snakes to the left
     }
     return "Player pushed.";
 }
