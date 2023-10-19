@@ -70,10 +70,9 @@ TEST_CASE("PlayerCanPushTest2", "[RequiredProject]")
 {
 	Plane c(20,20);
 	c.addPlayer(19, 10);
-	c.addSnake(1, 10);
-	c.addSnake(3, 10);
-	REQUIRE(c.numberOfSnakesAt(1, 10) == 1);
-	REQUIRE(c.numberOfSnakesAt(3,10) == 1);
+	c.addSnake(20, 10);
+	c.addSnake(20, 10);
+	REQUIRE(c.numberOfSnakesAt(20, 10) == 2);
 	// Plane c(20, 20);
 	// c.addPlayer(19, 10);
 	// c.addSnake(20, 10);

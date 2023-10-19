@@ -31,7 +31,11 @@ unsigned Snake::col() const
 
 bool Snake::isDead() const
 {
-    // TODO: IMPLEMENT ME
+    // A snake is dead if this returns true, and false otherwise
+    if (m_dead == true)
+    {
+        return true;
+    }
     return false;
 }
 

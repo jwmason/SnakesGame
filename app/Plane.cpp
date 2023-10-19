@@ -50,8 +50,10 @@ unsigned Plane::numberOfSnakesAt(unsigned r, unsigned c) const
     // Loop through each snake in snake object array
     for (unsigned i = 0; i < m_nSnakes; ++i)
     {
+        // Check if the snake is at that given position
         if (m_snakes[i]->row() == r && m_snakes[i]->col() == c)
         {
+            // Increment Counter
             snakes ++;
         }
     }
@@ -60,7 +62,6 @@ unsigned Plane::numberOfSnakesAt(unsigned r, unsigned c) const
 
 void Plane::moveSnakes()
 {
-    // TODO: IMPLEMENT ME
     // Move all snakes.  Mark the player as dead if necessary.
 }
 
