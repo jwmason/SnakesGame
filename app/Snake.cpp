@@ -65,7 +65,8 @@ void Snake::move()
 
 void Snake::setDead()
 {
-    // TODO: IMPLEMENT ME   
+    // Makes the snake dead
+    m_dead = true; 
 }
 
 void Snake::push(int dir)

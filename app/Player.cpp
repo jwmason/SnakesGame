@@ -1,5 +1,6 @@
 #include "Player.hpp"
 #include <iostream>
+#include <sstream>
 
 Player::Player(Plane* plane, unsigned r, unsigned c)
 :  onWhichPlane{plane}, m_row{r}, m_col{c}, m_dead{false}
@@ -47,7 +48,39 @@ std::string Player::move(int dir)
     
     // Otherwise, return one of "Player moved north.", "Player moved east.", 
     // "Player moved south.", or "Player moved west."
-    return "Player couldn't move; player stands.";
+
+    // Initialize message
+    std::string msg = "Player couldn't move; player stands.";
+
+    // north - 0, east - 1, south - 2, west - 3
+    
+    if (dir == 0 && m_row > 1)
+    {
+        m_row --; // move north
+        msg = "Player moved north.";
+    }
+    else if (dir == 1 && m_col < onWhichPlane->cols())
+    {
+        m_col ++; // move east
+        msg = "Player moved east.";
+    }
+    else if (dir == 2 && m_row < onWhichPlane->rows())
+    {
+        m_row ++; // move south
+        msg = "Player moved south.";
+    }
+    else if (dir == 3 && m_col > 1)
+    {
+        m_col --; // move west
+        msg = "Player moved west.";
+    }
+
+    if (onWhichPlane->numberOfSnakesAt(m_row, m_col) > 0)
+    {
+        msg = "Player walked into a snake and died.";
+    }
+
+    return msg;
 }
 
 bool Player::isDead() const
