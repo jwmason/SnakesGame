@@ -52,11 +52,16 @@ std::string Player::move(int dir)
 
 bool Player::isDead() const
 {
-    // TODO: IMPLEMENT ME 
+    // Check if Player is Dead or Not and return T/F
+    if (m_dead == true)
+    {
+        return true;
+    }
     return false;
 }
 
 void Player::setDead()
 {
-    // TODO: IMPLEMENT ME 
+    // Set Player dead
+    m_dead = true;
 }

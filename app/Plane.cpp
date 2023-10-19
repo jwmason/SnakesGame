@@ -66,6 +66,12 @@ void Plane::moveSnakes()
     for (unsigned i = 0; i < m_nSnakes; ++i)
     {
         m_snakes[i]->move();
+        // Check if snake moved to player position
+        std::cout << (m_snakes[i]->row() == m_player->row() && m_snakes[i]->col() == m_player->col());
+        if (m_snakes[i]->row() == m_player->row() && m_snakes[i]->col() == m_player->col())
+        {
+            m_player->setDead();
+        }
     }
 }
 
