@@ -168,7 +168,42 @@ bool Plane::recommendMove(unsigned r, unsigned c, int& bestDir)
     // otherwise, this function sets bestDir to the recommended direction
     // to move and returns true.
 
-    return false; 
+    // Initialize variables
+    unsigned max_danger = MAX_SNAKES; // max lv of danger
+    unsigned cur_danger = MAX_SNAKES; // current danger
+    unsigned bestDirection = -1;
+
+    // Loop through every direction
+    for (unsigned dir = 0; dir < NUMDIRS; ++dir)
+    {
+        // Initialize holding variables for r and c
+        unsigned test_r = r;
+        unsigned test_c = c;
+        // Use attemptMove to see if the dir, r, and c combination is viable
+        if (attemptMove(dir, test_r, test_c))
+        {
+            // Get danger level
+            unsigned new_danger = computeDanger(test_r, test_c);
+            // See if the direction is better than current direction
+            if (new_danger < max_danger)
+            {
+                if (new_danger < cur_danger)
+                {
+                    cur_danger = new_danger;
+                    bestDirection = dir;
+                }
+            }
+        }
+    }
+
+    // If no direction is better, return false
+    if (bestDirection ==  -1)
+    {
+        return false;
+    }
+    // If there is, set bestDir and return true
+    bestDir = bestDirection;
+    return true;
 }
 
 Player* Plane::player() const
