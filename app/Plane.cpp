@@ -79,7 +79,8 @@ void Plane::pushAllSnakes(unsigned r, unsigned c, int dir)
 {
     // Pushes all snakes at [r,c] in the given direction
     // Loop through every snake in Snake object array
-    for(unsigned i = 0; i < m_nSnakes; ++i)
+    unsigned init_snakes = m_nSnakes;
+    for(unsigned i = 0; i < init_snakes; ++i)
     {
         if (m_snakes[i]->row() == r && m_snakes[i]->col() == c)
         {
@@ -88,7 +89,17 @@ void Plane::pushAllSnakes(unsigned r, unsigned c, int dir)
             // Check if the snake died
             if (m_snakes[i]->isDead())
             {
-                m_nSnakes --;
+                // Deallocate memory for the dead snake
+                delete m_snakes[i];
+                
+                // Shift the remaining snakes in the array
+                for(unsigned j = i; j < m_nSnakes - 1; ++j)
+                {
+                    m_snakes[j] = m_snakes[j + 1];
+                }
+
+                // Decrement the count of snakes
+                m_nSnakes--;
             }
         }
     }

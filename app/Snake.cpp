@@ -90,7 +90,7 @@ void Snake::push(int dir)
         m_col --; // move west
     }
 
-    if (m_row >= onWhichPlane->rows() || m_col >= onWhichPlane->cols() || m_row <= 1 || m_col <= 1)
+    if (m_row > onWhichPlane->rows() || m_col > onWhichPlane->cols() || m_row < 1 || m_col < 1)
     {
         m_dead = true;
     }
