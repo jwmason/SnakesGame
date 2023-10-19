@@ -22,7 +22,19 @@ Plane::Plane(unsigned nRows, unsigned nCols)
 
 Plane::~Plane()
 {
-    // TODO: IMPLEMENT ME
+    // Free up space for snakes and player
+    // Loop through every snake
+    for (unsigned i = 0; i < m_nSnakes; ++i)
+    {
+        delete m_snakes[i];
+        m_snakes[i] = nullptr;
+    }
+    // Check if m_player is still alive and delete
+    if (m_player != nullptr)
+    {
+        delete m_player;
+        m_player = nullptr;
+    }
 }
 
 unsigned Plane::rows() const
@@ -91,14 +103,12 @@ void Plane::pushAllSnakes(unsigned r, unsigned c, int dir)
             {
                 // Deallocate memory for the dead snake
                 delete m_snakes[i];
-                
                 // Shift the remaining snakes in the array
                 for(unsigned j = i; j < m_nSnakes - 1; ++j)
                 {
                     m_snakes[j] = m_snakes[j + 1];
                 }
-
-                // Decrement the count of snakes
+                // Decrement snakes
                 m_nSnakes--;
             }
         }
