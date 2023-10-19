@@ -77,8 +77,21 @@ void Plane::moveSnakes()
 
 void Plane::pushAllSnakes(unsigned r, unsigned c, int dir)
 {
-    // TODO: IMPLEMENT ME
     // Pushes all snakes at [r,c] in the given direction
+    // Loop through every snake in Snake object array
+    for(unsigned i = 0; i < m_nSnakes; ++i)
+    {
+        if (m_snakes[i]->row() == r && m_snakes[i]->col() == c)
+        {
+            // Push function
+            m_snakes[i]->push(dir);
+            // Check if the snake died
+            if (m_snakes[i]->isDead())
+            {
+                m_nSnakes --;
+            }
+        }
+    }
 }
 
 bool Plane::attemptMove(int dir, unsigned& r, unsigned& c)

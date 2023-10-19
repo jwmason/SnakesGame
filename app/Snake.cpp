@@ -71,6 +71,27 @@ void Snake::setDead()
 
 void Snake::push(int dir)
 {
-    // TODO: IMPLEMENT ME
     // Pushes this snake in this direction.
+    // north - 0, east - 1, south - 2, west - 3
+    if (dir == 0)
+    {
+        m_row --; // move north
+    }
+    else if (dir == 1)
+    {
+        m_col ++; // move east
+    }
+    else if (dir == 2)
+    {
+        m_row ++; // move south
+    }
+    else if (dir == 3)
+    {
+        m_col --; // move west
+    }
+
+    if (m_row >= onWhichPlane->rows() || m_col >= onWhichPlane->cols() || m_row <= 1 || m_col <= 1)
+    {
+        m_dead = true;
+    }
 }

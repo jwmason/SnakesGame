@@ -68,20 +68,15 @@ TEST_CASE("PlayerCanPushTest1", "[RequiredProject]")
 
 TEST_CASE("PlayerCanPushTest2", "[RequiredProject]")
 {
-	Plane c(20,20);
+	Plane c(20, 20);
 	c.addPlayer(19, 10);
 	c.addSnake(20, 10);
-	c.addSnake(20, 10);
-	REQUIRE(c.numberOfSnakesAt(20, 10) == 2);
-	// Plane c(20, 20);
-	// c.addPlayer(19, 10);
-	// c.addSnake(20, 10);
-	// c.addSnake(3, 10);
-	// Player * p = c.player();
-	// p->push();
-	// REQUIRE(c.numberOfSnakesAt(20, 10) == 0 );
-	// REQUIRE(c.numberOfSnakesAt(3,10) == 1 );
-	// REQUIRE( c.snakeCount() == 1);
+	c.addSnake(3, 10);
+	Player * p = c.player();
+	p->push();
+	REQUIRE(c.numberOfSnakesAt(20, 10) == 0 );
+	REQUIRE(c.numberOfSnakesAt(3,10) == 1 );
+	REQUIRE( c.snakeCount() == 1);
 	
 }  
 

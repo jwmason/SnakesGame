@@ -32,8 +32,11 @@ unsigned Player::col() const
 
 std::string Player::push()
 {
-    // TODO: IMPLEMENT ME 
     // Cause the player to push, as per the spec.
+    onWhichPlane->pushAllSnakes(m_row - 1, m_col, 0); // Push up
+    onWhichPlane->pushAllSnakes(m_row, m_col + 1, 1); // Push right
+    onWhichPlane->pushAllSnakes(m_row + 1, m_col, 2); // Push down
+    onWhichPlane->pushAllSnakes(m_row, m_col - 1, 3); // Push left
     return "Player pushed.";
 }
 
