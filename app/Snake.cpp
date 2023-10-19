@@ -41,8 +41,26 @@ bool Snake::isDead() const
 
 void Snake::move()
 {
-    // TODO: IMPLEMENT ME
     // Attempt a move in a random direction;  if it can't move, don't move.
+    int dir = rand() % 4; // gets a random direction from 0-3
+
+    // north - 0, east - 1, south - 2, west - 3
+    if (dir == 0 && m_row > 1)
+    {
+        m_row --; // move north
+    }
+    else if (dir == 1 && m_row < onWhichPlane->cols())
+    {
+        m_col ++; // move east
+    }
+    else if (dir == 2 && m_row < onWhichPlane->rows())
+    {
+        m_row ++; // move south
+    }
+    else if (dir == 3 && m_col > 1)
+    {
+        m_col --; // move west
+    }
 }
 
 void Snake::setDead()

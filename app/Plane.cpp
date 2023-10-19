@@ -63,6 +63,10 @@ unsigned Plane::numberOfSnakesAt(unsigned r, unsigned c) const
 void Plane::moveSnakes()
 {
     // Move all snakes.  Mark the player as dead if necessary.
+    for (unsigned i = 0; i < m_nSnakes; ++i)
+    {
+        m_snakes[i]->move();
+    }
 }
 
 void Plane::pushAllSnakes(unsigned r, unsigned c, int dir)
