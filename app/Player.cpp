@@ -42,7 +42,6 @@ std::string Player::push()
 
 std::string Player::move(int dir)
 {
-    // TODO: IMPLEMENT ME 
     // Attempt to have the player move.
     // If it fails, return "Player couldn't move;  player stands."
     
@@ -78,6 +77,7 @@ std::string Player::move(int dir)
         msg = "Player moved west.";
     }
 
+    // Check if the player stepped on a snake
     if (onWhichPlane->numberOfSnakesAt(m_row, m_col) > 0)
     {
         msg = "Player walked into a snake and died.";

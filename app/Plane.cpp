@@ -29,7 +29,6 @@ Plane::~Plane()
         delete m_snakes[i];
         m_snakes[i] = nullptr;
     }
-    delete [] m_snakes;
     // Check if m_player is still alive and delete
     if (m_player != nullptr)
     {
@@ -171,7 +170,7 @@ bool Plane::recommendMove(unsigned r, unsigned c, int& bestDir)
     // Initialize variables
     unsigned max_danger = MAX_SNAKES; // max lv of danger
     unsigned cur_danger = MAX_SNAKES; // current danger
-    unsigned bestDirection = -1;
+    int bestDirection = -1;
 
     // Loop through every direction
     for (unsigned dir = 0; dir < NUMDIRS; ++dir)
@@ -184,9 +183,10 @@ bool Plane::recommendMove(unsigned r, unsigned c, int& bestDir)
         {
             // Get danger level
             unsigned new_danger = computeDanger(test_r, test_c);
-            // See if the direction is better than current direction
+            // See if the direction is better than no direction
             if (new_danger < max_danger)
             {
+                // See if direction is better than current direction
                 if (new_danger < cur_danger)
                 {
                     cur_danger = new_danger;
