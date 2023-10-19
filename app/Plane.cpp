@@ -29,6 +29,7 @@ Plane::~Plane()
         delete m_snakes[i];
         m_snakes[i] = nullptr;
     }
+    delete [] m_snakes;
     // Check if m_player is still alive and delete
     if (m_player != nullptr)
     {
@@ -162,12 +163,11 @@ bool Plane::attemptMove(int dir, unsigned& r, unsigned& c)
 
 bool Plane::recommendMove(unsigned r, unsigned c, int& bestDir)
 {
-    // TODO: IMPLEMENT ME
-
     // Recommend a move for a player at (r,c):  A false return means the
     // recommendation is that the player should push and not move;
     // otherwise, this function sets bestDir to the recommended direction
     // to move and returns true.
+
     return false; 
 }
 
